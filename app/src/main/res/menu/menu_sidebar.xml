@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/group1"
+        >
+        <item
+            android:id="@+id/nav_cycle"
+            android:title="Cycle"
+            android:icon="@drawable/ic_baseline_search_24"
+            />
+        <item
+            android:id="@+id/nav_home"
+            android:title="home"
+            android:icon="@drawable/ic_baseline_save_24"
+            />
+        <item
+            android:id="@+id/nav_settings"
+            android:title="settings"
+            android:icon="@drawable/ic_baseline_save_24"
+            />
+        <item
+            android:id="@+id/nav_plane"
+            android:title="Plane"
+            android:icon="@drawable/ic_baseline_save_24"
+            />
+        <item
+            android:id="@+id/nav_kutta"
+            android:title="Dog"
+            android:icon="@drawable/ic_baseline_search_24"
+            />
+
+
+
+    </group>
+
+    <group>
+
+        <item
+            android:id="@+id/nav_cycle1"
+            android:title="Music"
+            android:icon="@drawable/ic_baseline_save_24"
+            />
+
+    </group>
+
+    <item
+        android:title="communicate"
+        android:id="@+id/communicate"
+        android:icon="@drawable/ic_baseline_search_24"
+        />
+</menu>

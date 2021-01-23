@@ -1,0 +1,77 @@
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/gears"
+    >
+    
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:rowCount="4"
+        android:columnCount="2"
+        >
+
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button"
+            android:background="@drawable/boarder_for_search"
+            android:layout_rowWeight="1"
+            android:layout_gravity="fill"
+            android:layout_columnWeight="1"
+            />
+        <Button
+            android:id="@+id/bsutton"
+            android:layout_columnWeight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button"
+            android:layout_gravity="fill"
+            />
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button"
+            android:layout_gravity="fill"
+            android:layout_columnWeight="1"
+            android:layout_row="2"
+            android:layout_rowWeight="1"
+            android:layout_column="0"
+            />
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button"
+            android:layout_gravity="fill"
+            android:layout_columnWeight="1"
+            />
+        <Button
+            android:id="@+id/buttofn3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button"
+            android:layout_rowWeight="1"
+            android:layout_gravity="fill"
+            />
+        <Button
+            android:id="@+id/buttosfn3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button"
+            android:layout_rowWeight="1"
+            android:layout_gravity="fill"
+            />
+
+
+
+    </GridLayout>
+
+    
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
