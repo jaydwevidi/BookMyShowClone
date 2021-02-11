@@ -6,5 +6,7 @@ data class CityPack(
     val c3 :MyCityObject
 
 ) {
-
+    override fun toString(): String {
+        return "[$c1 , $c2 , $c3]"
+    }
 }

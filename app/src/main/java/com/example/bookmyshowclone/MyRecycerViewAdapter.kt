@@ -6,77 +6,88 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.custom_item_for_recyclerview.view.*
 
-class MyRecyclerAdapter(var dataList: MutableList<CityPack> , var context:Context)
-    : RecyclerView.Adapter<MyRecyclerAdapter.MyViewHolder>() {
+class MyRecyclerAdapter(var dataList: MutableList<MyCityObject>, var context: Context) :
+    RecyclerView.Adapter<MyRecyclerAdapter.MyViewHolder>() {
 
-    inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        var t1 = itemView.t1
-        var t2 = itemView.t2
-        var t3 = itemView.t3
-        var i1 = itemView.i1
-        var i2 = itemView.i2
-        var i3 = itemView.i3
+    private val completeList: List<MyCityObject> = dataList
 
+    fun filter(filterString: String) {
+        dataList = completeList.toMutableList()
+        dataList.clear()
+        for (i in completeList) {
+            if (i.name.contains(filterString, true))
+                dataList.add(i)
+        }
+        notifyDataSetChanged()
+    }
+
+    inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var t1: TextView = itemView.t1
+        var i1: ImageView = itemView.i1
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.custom_item_for_recyclerview ,parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(
+            R.layout.custom_item_for_recyclerview,
+            parent,
+            false
+        )
         return MyViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.t1.text =  dataList[position].c1.name
-        holder.t2.text =  dataList[position].c2.name
-        holder.t3.text =  dataList[position].c3.name
+        holder.t1.text = dataList[position].name
 
-        holder.i1.setImageResource(getResourceID(dataList[position].c1.name))
+        /*holder.i1.setImageResource(getResourceID(dataList[position].c1.name))
         holder.i2.setImageResource(getResourceID(dataList[position].c2.name))
-        holder.i3.setImageResource(getResourceID(dataList[position].c3.name))
+        holder.i3.setImageResource(getResourceID(dataList[position].c3.name))*/
+
+        Glide.with(holder.itemView)
+            .load(getImageURL(dataList[position].name))
+            .fitCenter()
+            .into(holder.i1)
+
+
 
         holder.i1.setOnClickListener {
-            //Toast.makeText(context, dataList[position].c1.name, Toast.LENGTH_SHORT).show()
 
-            var myIntent = Intent(context , page::class.java)
-            myIntent.putExtra("cityName",dataList[position].c1.name,)
-            myIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            var myIntent = Intent(context, page::class.java)
+            myIntent.putExtra("cityName", dataList[position].name)
+            myIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             context.startActivity(myIntent)
         }
 
-        holder.i2.setOnClickListener {
-            //Toast.makeText(context, dataList[position].c2.name, Toast.LENGTH_SHORT).show()
+    }
 
-            var myIntent = Intent(context , page::class.java)
-            myIntent.putExtra("cityName",dataList[position].c2.name,)
-            myIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(myIntent)
-
-        }
-
-        holder.i3.setOnClickListener {
-           // Toast.makeText(context, dataList[position].c3.name, Toast.LENGTH_SHORT).show()
-
-            var myIntent = Intent(context , page::class.java)
-            myIntent.putExtra("cityName",dataList[position].c3.name,)
-            myIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(myIntent)
+    fun getImageURL(name: String): String {
+        return when (name) {
+            "Delhi" -> "https://in.bmscdn.com/m6/images/common-modules/regions/ncr.png"
+            "Mumbai" -> "https://in.bmscdn.com/m6/images/common-modules/regions/mumbai.png"
+            "Banglore" -> "https://in.bmscdn.com/m6/images/common-modules/regions/bang.png"
+            "Hyderabad" -> "https://in.bmscdn.com/m6/images/common-modules/regions/hyd.png"
+            "Ahmedabad" -> "https://in.bmscdn.com/m6/images/common-modules/regions/ahd.png"
+            "Kolkatta" -> "https://in.bmscdn.com/m6/images/common-modules/regions/kolk.png"
+            else -> "https://in.bmscdn.com/m6/images/common-modules/regions/koch.png"
         }
     }
 
-    fun getResourceID(name: String):Int{
-        return when(name){
-                "Delhi"     ->  R.drawable.ncr
-                "Mumbai"    ->  R.drawable.mumbai
-                "Ahemdabad" ->  R.drawable.ahd
-                "Pune"      ->  R.drawable.pune
-                "Calicut"   ->  R.drawable.bang
-                "new York"  ->  R.drawable.chen
-                "LA"        ->  R.drawable.hyd
-                "London"    ->  R.drawable.ncr
-                "Lucknow"   ->  R.drawable.bang
+    fun getResourceID(name: String): Int {
+        return when (name) {
+            "Delhi" -> R.drawable.ncr
+            "Mumbai" -> R.drawable.mumbai
+            "Ahemdabad" -> R.drawable.ahd
+            "Pune" -> R.drawable.pune
+            "Calicut" -> R.drawable.bang
+            "new York" -> R.drawable.chen
+            "LA" -> R.drawable.hyd
+            "London" -> R.drawable.ncr
+            "Lucknow" -> R.drawable.bang
             else -> R.drawable.chen
         }
     }

@@ -1,7 +1,8 @@
 <LinearLayout android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_weight="1"
-    android:gravity="center"
+    android:gravity="center_horizontal"
+
 
     android:weightSum="3"
     xmlns:android="http://schemas.android.com/apk/res/android">
@@ -10,18 +11,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
+        android:layout_gravity="center_horizontal"
         android:layout_weight="1"
 
         android:background="@drawable/border_for_cities"
-        android:gravity="center"
+        android:gravity="center_horizontal"
         android:orientation="vertical"
         android:weightSum="2">
 
         <ImageView
             android:id="@+id/i1"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
+            android:layout_gravity="center_horizontal"
 
             android:padding="5dp"
             android:src="@drawable/ahd" />
@@ -30,6 +33,8 @@
             android:id="@+id/t1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
 
             android:gravity="center"
             android:padding="4dp"
@@ -38,70 +43,5 @@
         </TextView>
     </LinearLayout>
 
-    <LinearLayout
 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:layout_weight="1"
-        android:background="@drawable/border_for_cities"
-        android:gravity="center"
-
-        android:orientation="vertical"
-        android:weightSum="2">
-
-        <ImageView
-
-            android:id="@+id/i2"
-            android:layout_width="wrap_content"
-            android:layout_height="70dp"
-            android:layout_marginTop="5dp"
-
-            android:padding="5dp"
-            android:gravity="center"
-            android:src="@drawable/chen" />
-
-        <TextView
-            android:id="@+id/t2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="4dp"
-            android:text="Chennai">
-
-        </TextView>
-    </LinearLayout>
-
-    <LinearLayout
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:layout_weight="1"
-        android:background="@drawable/border_for_cities"
-        android:gravity="center"
-
-        android:orientation="vertical"
-        android:weightSum="2">
-
-        <ImageView
-
-            android:id="@+id/i3"
-            android:layout_width="wrap_content"
-            android:layout_height="70dp"
-            android:padding="5dp"
-            android:layout_marginTop="5dp"
-            android:src="@drawable/hyd" />
-
-        <TextView
-            android:id="@+id/t3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:gravity="center"
-            android:padding="4dp"
-            android:text="Hyderabad">
-
-        </TextView>
-    </LinearLayout>
 </LinearLayout>
